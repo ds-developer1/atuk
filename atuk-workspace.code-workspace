@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"licenser.author": "Alan Quimbita, Esteban Molina, Shakira Cofre",
+		"licenser.customHeaderFile": "C:/Users/david/OneDrive/Documentos/GitHub/header.txt",
+		"licenser.projectName": "Atuk",
+		"licenser.license": "Custom"
+	}
+}
