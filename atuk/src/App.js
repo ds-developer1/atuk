@@ -29,7 +29,7 @@ function App() {
         <p>A tool for Mathematical SWOT.</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/ds-developer1/atuk.git"
           target="_blank"
           rel="noopener noreferrer"
         >
