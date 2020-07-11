@@ -22,6 +22,7 @@ import github_logo from "./img/github-icon.svg";
 import "./App.css";
 import "./App.sass";
 
+import Hero from "./components/layout/Hero";
 import Input from "./components/input/InputTable";
 
 function App() {
@@ -80,8 +81,9 @@ function App() {
   );
 
   return (
-    <div>
-      <div className="tile is-ancestor">
+    <React.Fragment>
+      <Hero></Hero>
+      <div className="tile is-ancestor mt-2">
         <div className="tile is-parent">
           <article className="tile is-child notification is-info">
             <div className="content">
@@ -103,7 +105,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

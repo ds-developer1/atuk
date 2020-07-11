@@ -69,39 +69,55 @@ const InputTable = (props) => {
 
   return (
     <React.Fragment>
-      <div className="columns">
-        <div className="column">
-          <div className="field is-grouped">
-            <div className="control">
-              <button className="button is-success" onClick={addColumn}>
-                Añadir Elemento estratégico
-              </button>
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-success" onClick={addColumn}>
+                  Añadir Elemento estratégico
+                </button>
+              </div>
             </div>
-            <div className="control">
-              <button className="button is-success" onClick={addRow}>
-                Añadir Variable
-              </button>
+          </div>
+          <div className="column">
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-success" onClick={addRow}>
+                  Añadir Variable
+                </button>
+              </div>
             </div>
-            <div className="control">
-              <button
-                className="button is-danger"
-                onClick={data[0].length > 2 ? removeColumn : 0}
-              >
-                Eliminar Elemento estratégico
-              </button>
+          </div>
+          <div className="column">
+            <div className="field">
+              <div className="control">
+                <button
+                  className="button is-danger"
+                  onClick={data[0].length > 2 ? removeColumn : 0}
+                >
+                  Eliminar Elemento estratégico
+                </button>
+              </div>
             </div>
-            <div className="control">
-              <button
-                className="button is-danger"
-                onClick={data.length > 1 ? removeRow : 0}
-              >
-                Eliminar Variable
-              </button>
+          </div>
+          <div className="column">
+            <div className="field is-grouped">
+              <div className="control">
+                <button
+                  className="button is-danger"
+                  onClick={data.length > 1 ? removeRow : 0}
+                >
+                  Eliminar Variable
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Spreadsheet data={data} onChange={setData} />
+      <div className="container mt-3">
+        <Spreadsheet data={data} onChange={setData} />
+      </div>
     </React.Fragment>
   );
 };
