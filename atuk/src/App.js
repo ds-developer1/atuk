@@ -137,16 +137,36 @@ function App() {
   // Menu & flow state variables
   let [workAreaOption, setWorkAreaOption] = useState("1");
   let [workAreaTitle, setWorkAreaTitle] = useState("Matriz Inicial");
+  let [pareto, setPareto] = useState("80");
 
   // Data for SWOT workflow
   let [swotData, setSwotData] = useState([
     [
       { value: "Variable" },
-      { value: "Valor" },
+      { value: "Elemento estratégico" },
       { value: "Misión" },
       { value: "Visión" },
     ],
-    [{ value: "Personal capacitado" }],
+    [
+      { value: "Personal capacitado" },
+      { value: "1" },
+      { value: "1" },
+      { value: "1" },
+    ],
+    [{ value: "Variables 2" }, { value: "2" }, { value: "2" }, { value: "2" }],
+    [{ value: "Variables 3" }, { value: "3" }, { value: "3" }, { value: "3" }],
+    [{ value: "Variables 4" }, { value: "4" }, { value: "4" }, { value: "4" }],
+    [{ value: "Variables 5" }, { value: "5" }, { value: "5" }, { value: "5" }],
+    [{ value: "Variables 6" }, { value: "6" }, { value: "6" }, { value: "6" }],
+    [{ value: "Variables 7" }, { value: "7" }, { value: "7" }, { value: "7" }],
+    [{ value: "Variables 8" }, { value: "8" }, { value: "8" }, { value: "8" }],
+    [{ value: "Variables 9" }, { value: "9" }, { value: "9" }, { value: "9" }],
+    [
+      { value: "Variables 10" },
+      { value: "10" },
+      { value: "10" },
+      { value: "10" },
+    ],
   ]);
 
   // Functions to use in the SWOT workflow
@@ -221,6 +241,7 @@ function App() {
     }
   };
 
+  // Function to add row "Porcentaje Acumulado" with calculation in SWOT data
   const calculateAccumulatedPercentages = function (items) {
     // Add column for 'Porcentaje Acumulado'
     items[0].push({ value: "Porcentaje Acumulado" });
@@ -247,22 +268,40 @@ function App() {
     }
   };
 
+  // Function to apply Pareto Index in SWOT data
+  const applyPareto = function (items) {
+    // Get the length of the data array
+    let length = items.length;
+    // Variable to count rows to delete
+    let count = 0;
+    // Loop to count to delete rows based on Pareto Index
+    for (let i = 1; i < length; i++) {
+      if (Number(items[i][items[i].length - 1].value) > Number(pareto)) {
+        count++;
+      }
+    }
+    // Delete row according Pareto Index
+    for (let i = 0; i < count; i++) {
+      items.pop();
+    }
+  };
+
   const performanceWorkflow = function (option) {
+    // slice() creates a new array with the values of swotData
+    let items = swotData.slice();
     // switch the new value of workAreaOption
+    // Argument 'items' are send by reference
     switch (option) {
       case "1":
         break;
       case "2":
-        // Calculates totals of each variable
-        let items = swotData.slice();
-        // Argument 'items' are send by reference
         calculateTotals(items);
         orderSwotData(items);
         calculatePercentages(items);
         calculateAccumulatedPercentages(items);
-        setSwotData(items);
         break;
       case "3":
+        applyPareto(items);
         break;
       case "4":
         break;
@@ -273,6 +312,7 @@ function App() {
       case "7":
         break;
     }
+    setSwotData(items);
   };
 
   // Buttons & Aside Menu hanlde funcions
@@ -318,11 +358,21 @@ function App() {
     }
   };
 
+  // Handle function for Radio Button Option in Pareto
+  const handleChange = (e) => {
+    setPareto(e.target.value);
+  };
+
   // Effect of workAreaOption -- Updates de title of the WorkArea
   useEffect(() => {
     // Updates the Work Area Title
     setWorkAreaTitle(asideMenuOptions[workAreaOption]);
   }, [workAreaOption]);
+
+  useEffect(() => {
+    // Sets the first Pareto Index => 80
+    setPareto("80");
+  }, []);
 
   return (
     <React.Fragment>
@@ -346,6 +396,7 @@ function App() {
                 titleName={workAreaTitle}
                 handleBackClick={handleBackClick}
                 handleContinueClick={handleContinueClick}
+                handleChange={handleChange}
               />
             </div>
           </div>

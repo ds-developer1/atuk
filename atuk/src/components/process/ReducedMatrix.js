@@ -16,10 +16,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React from "react";
+import React, { useState } from "react";
 import Spreadsheet from "react-spreadsheet";
 
-const Table = (props) => {
+const ReducedMatrix = (props) => {
   return (
     <React.Fragment>
       <div className="container mt-3 mx-1">
@@ -29,4 +29,4 @@ const Table = (props) => {
   );
 };
 
-export default Table;
+export default ReducedMatrix;

@@ -17,25 +17,30 @@
 
 import React, { useState } from "react";
 import Input from "./input/InputTable";
-import Table from "./input/Table";
+import Pareto from "./input/Pareto";
+import ReducedMatrix from "./process/ReducedMatrix";
 
 const RenderArea = (props) => {
   switch (props.workAreaOption) {
     case "1":
       return (
-        <Input
-          swotData={props.swotData}
-          setSwotData={props.setSwotData}
-        ></Input>
+        <Input swotData={props.swotData} setSwotData={props.setSwotData} />
       );
     case "2":
       return (
-        <Table
+        <Pareto
+          handleChange={props.handleChange}
           swotData={props.swotData}
           setSwotData={props.setSwotData}
-        ></Table>
+        />
       );
     case "3":
+      return (
+        <ReducedMatrix
+          swotData={props.swotData}
+          setSwotData={props.setSwotData}
+        />
+      );
       break;
     case "4":
       break;
@@ -58,6 +63,7 @@ const WorkArea = (props) => {
           workAreaOption={props.workAreaOption}
           swotData={props.swotData}
           setSwotData={props.setSwotData}
+          handleChange={props.handleChange}
         ></RenderArea>
       </div>
       <div className="container">
