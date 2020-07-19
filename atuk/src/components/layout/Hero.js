@@ -16,56 +16,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React, { useState, useCallback } from "react";
+import React from "react";
 import logo from "../../img/logoAtuk.svg";
 import github_logo from "../../img/github-icon.svg";
+// import atuk_logo from "../../img/atuk.svg";
 
 const Hero = () => {
   return (
     <section className="hero is-info">
-      <div className="hero-head">
-        <nav className="navbar">
-          <div className="container">
-            <div className="navbar-brand">
-              <a href="#" className="navbar-item">
-                <img
-                  src="https://bulma.io/images/bulma-type-white.png"
-                  alt="Logo"
-                />
-              </a>
-              <span
-                className="navbar-burger burger"
-                data-target="navbarMenuHeroB"
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
-            <div id="navbarMenuHeroB" className="navbar-menu">
-              <div className="navbar-end">
-                <a href="#" className="navbar-item is-active">
-                  Home
-                </a>
-                <a href="#" className="navbar-item">
-                  Examples
-                </a>
-                <a href="#" className="navbar-item">
-                  Documentation
-                </a>
-                <span className="navbar-item">
-                  <a href="#" className="button is-info is-inverted">
-                    <span className="icon">
-                      <i className="fab fa-github"></i>
-                    </span>
-                    <span>Download</span>
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <div className="hero-head"></div>
 
       <div className="hero-body level">
         <div className="level-item has-text-centered">
@@ -73,13 +32,17 @@ const Hero = () => {
             <div className="container">
               <ul>
                 <li className="is-active">
-                  <a href="#">Inicio</a>
+                  <a href="https://atuk.netlify.app/">Inicio</a>
                 </li>
                 <li>
-                  <a href="#">FODA Matemático</a>
+                  <a href="https://atuk-blog.netlify.app/foda">
+                    FODA Matemático
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Planificación Estratégica</a>
+                  <a href="https://atuk-blog.netlify.app/planificacion">
+                    Planificación Estratégica
+                  </a>
                 </li>
               </ul>
             </div>
@@ -96,7 +59,9 @@ const Hero = () => {
                   <a href="#">Acerca de</a>
                 </li>
                 <li>
-                  <a href="#">Ayuda</a>
+                  <a href="https://atuk-blog.netlify.app/" target="_blank">
+                    Ayuda
+                  </a>
                 </li>
                 <li>
                   <a

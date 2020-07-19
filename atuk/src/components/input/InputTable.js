@@ -19,53 +19,41 @@
 import React, { useState, useCallback } from "react";
 import Spreadsheet from "react-spreadsheet";
 
-const initialData = [
-  [
-    { value: "Variable" },
-    { value: "Valor" },
-    { value: "Misión" },
-    { value: "Visión" },
-  ],
-  [{ value: "Personal capacitado" }],
-];
-
 const InputTable = (props) => {
-  const [data, setData] = useState(initialData);
-
   const addColumn = useCallback(
     () =>
-      setData((data) =>
+      props.setSwotData((data) =>
         data.map((row) => {
           const nextRow = [...row];
           nextRow.length += 1;
           return nextRow;
         })
       ),
-    [setData]
+    [props.setSwotData]
   );
 
   const removeColumn = useCallback(() => {
-    setData((data) =>
+    props.setSwotData((data) =>
       data.map((row) => {
         return row.slice(0, row.length - 1);
       })
     );
-  }, [setData]);
+  }, [props.setSwotData]);
 
   const addRow = useCallback(
     () =>
-      setData((data) => {
+      props.setSwotData((data) => {
         const columns = data[0].length ? data[0].length : 0;
         return [...data, Array(columns)];
       }),
-    [setData]
+    [props.setSwotData]
   );
 
   const removeRow = useCallback(() => {
-    setData((data) => {
+    props.setSwotData((data) => {
       return data.slice(0, data.length - 1);
     });
-  }, [setData]);
+  }, [props.setSwotData]);
 
   return (
     <React.Fragment>
@@ -78,10 +66,6 @@ const InputTable = (props) => {
                   Añadir Elemento estratégico
                 </button>
               </div>
-            </div>
-          </div>
-          <div className="column">
-            <div className="field is-grouped">
               <div className="control">
                 <button className="button is-success" onClick={addRow}>
                   Añadir Variable
@@ -89,24 +73,22 @@ const InputTable = (props) => {
               </div>
             </div>
           </div>
-          <div className="column">
-            <div className="field">
-              <div className="control">
-                <button
-                  className="button is-danger"
-                  onClick={data[0].length > 2 ? removeColumn : 0}
-                >
-                  Eliminar Elemento estratégico
-                </button>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div className="columns">
           <div className="column">
             <div className="field is-grouped">
               <div className="control">
                 <button
                   className="button is-danger"
-                  onClick={data.length > 1 ? removeRow : 0}
+                  onClick={props.swotData[0].length > 2 ? removeColumn : 0}
+                >
+                  Eliminar Elemento estratégico
+                </button>
+              </div>
+              <div className="control">
+                <button
+                  className="button is-danger"
+                  onClick={props.swotData.length > 1 ? removeRow : 0}
                 >
                   Eliminar Variable
                 </button>
@@ -115,8 +97,8 @@ const InputTable = (props) => {
           </div>
         </div>
       </div>
-      <div className="container mt-3">
-        <Spreadsheet data={data} onChange={setData} />
+      <div className="container mt-3 mx-1">
+        <Spreadsheet data={props.swotData} onChange={props.setSwotData} />
       </div>
     </React.Fragment>
   );
