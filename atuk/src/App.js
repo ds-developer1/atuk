@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./App.sass";
 //import logo from "./img/logoAtuk.svg";
@@ -24,6 +24,7 @@ import "./App.sass";
 
 import Hero from "./components/layout/Hero";
 import WorkArea from "./components/WorkArea";
+import { setData } from "react-spreadsheet/dist/actions";
 
 // Option for Aside Menu in the main App
 let asideMenuOptions = {
@@ -138,6 +139,7 @@ function App() {
   let [workAreaOption, setWorkAreaOption] = useState("1");
   let [workAreaTitle, setWorkAreaTitle] = useState("Matriz Inicial");
   let [pareto, setPareto] = useState("80");
+  let [dataGraph, setDataGraph] = useState([]);
 
   // Data for SWOT workflow
   let [swotData, setSwotData] = useState([
@@ -407,16 +409,30 @@ function App() {
     // Variables for new Priorization Matrix
     items.push([
       { value: "Variable" },
-      { value: "Motricidad" },
       { value: "Dependencia" },
+      { value: "Motricidad" },
     ]);
     // Loop to generate the Priorization Matrix
     for (let i = 1; i < variables.length + 1; i++) {
       items.push([
         variables[i - 1],
-        { value: motricity[i - 1] },
         { value: dependency[i - 1] },
+        { value: motricity[i - 1] },
       ]);
+    }
+  };
+
+  // Function to generate the data to be presented in a Bubble Chart
+  const generateDataGraph = function (items, data) {
+    // Variable for radius (in pixels) for bubbles
+    let r = 25;
+    // Loop to gather the data to graph from SWOT data
+    for (let i = 1; i < items.length; i++) {
+      data.push({
+        x: Number(items[i][1].value),
+        y: Number(items[i][2].value),
+        r: r,
+      });
     }
   };
 
@@ -444,6 +460,9 @@ function App() {
         evaluateInfluency(items);
         break;
       case "6":
+        let data = dataGraph.slice();
+        generateDataGraph(items, data);
+        setDataGraph(data);
         break;
       case "7":
         break;
@@ -533,6 +552,7 @@ function App() {
                 handleBackClick={handleBackClick}
                 handleContinueClick={handleContinueClick}
                 handleChange={handleChange}
+                dataGraph={dataGraph}
               />
             </div>
           </div>

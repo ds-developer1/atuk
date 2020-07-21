@@ -15,12 +15,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React, { useState } from "react";
+import React from "react";
 import Input from "./input/InputTable";
 import Pareto from "./input/Pareto";
 import ReducedMatrix from "./process/ReducedMatrix";
 import Evaluation from "./process/Evaluation";
 import Priorization from "./process/Priorization";
+import Graph from "./results/Graph";
 
 const RenderArea = (props) => {
   switch (props.workAreaOption) {
@@ -55,9 +56,10 @@ const RenderArea = (props) => {
         />
       );
     case "6":
-      break;
+      return <Graph dataGraph={props.dataGraph} />;
     case "7":
-      break;
+    default:
+      return <Graph dataGraph={props.dataGraph} />;
   }
 };
 
@@ -72,6 +74,7 @@ const WorkArea = (props) => {
           swotData={props.swotData}
           setSwotData={props.setSwotData}
           handleChange={props.handleChange}
+          dataGraph={props.dataGraph}
         ></RenderArea>
       </div>
       <div className="container">
@@ -89,7 +92,7 @@ const WorkArea = (props) => {
           */}
           <div className="control">
             <div
-              className="button is-link"
+              className="button is-link mt-3"
               name="btnContinue"
               onClick={props.handleContinueClick}
             >

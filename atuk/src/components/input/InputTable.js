@@ -16,44 +16,45 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import Spreadsheet from "react-spreadsheet";
 
 const InputTable = (props) => {
+  const setSwotData = props.setSwotData;
   const addColumn = useCallback(
     () =>
-      props.setSwotData((data) =>
+      setSwotData((data) =>
         data.map((row) => {
           const nextRow = [...row];
           nextRow.length += 1;
           return nextRow;
         })
       ),
-    [props.setSwotData]
+    [setSwotData]
   );
 
   const removeColumn = useCallback(() => {
-    props.setSwotData((data) =>
+    setSwotData((data) =>
       data.map((row) => {
         return row.slice(0, row.length - 1);
       })
     );
-  }, [props.setSwotData]);
+  }, [setSwotData]);
 
   const addRow = useCallback(
     () =>
-      props.setSwotData((data) => {
+      setSwotData((data) => {
         const columns = data[0].length ? data[0].length : 0;
         return [...data, Array(columns)];
       }),
-    [props.setSwotData]
+    [setSwotData]
   );
 
   const removeRow = useCallback(() => {
-    props.setSwotData((data) => {
+    setSwotData((data) => {
       return data.slice(0, data.length - 1);
     });
-  }, [props.setSwotData]);
+  }, [setSwotData]);
 
   return (
     <React.Fragment>
@@ -98,7 +99,7 @@ const InputTable = (props) => {
         </div>
       </div>
       <div className="container mt-3 mx-1">
-        <Spreadsheet data={props.swotData} onChange={props.setSwotData} />
+        <Spreadsheet data={props.swotData} onChange={setSwotData} />
       </div>
     </React.Fragment>
   );
