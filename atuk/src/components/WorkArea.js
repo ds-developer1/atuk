@@ -19,6 +19,8 @@ import React, { useState } from "react";
 import Input from "./input/InputTable";
 import Pareto from "./input/Pareto";
 import ReducedMatrix from "./process/ReducedMatrix";
+import Evaluation from "./process/Evaluation";
+import Priorization from "./process/Priorization";
 
 const RenderArea = (props) => {
   switch (props.workAreaOption) {
@@ -41,11 +43,17 @@ const RenderArea = (props) => {
           setSwotData={props.setSwotData}
         />
       );
-      break;
     case "4":
-      break;
+      return (
+        <Evaluation swotData={props.swotData} setSwotData={props.setSwotData} />
+      );
     case "5":
-      break;
+      return (
+        <Priorization
+          swotData={props.swotData}
+          setSwotData={props.setSwotData}
+        />
+      );
     case "6":
       break;
     case "7":

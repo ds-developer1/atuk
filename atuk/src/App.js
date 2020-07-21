@@ -143,6 +143,7 @@ function App() {
   let [swotData, setSwotData] = useState([
     [
       { value: "Variable" },
+      { value: "Valor" },
       { value: "Elemento estratégico" },
       { value: "Misión" },
       { value: "Visión" },
@@ -152,17 +153,67 @@ function App() {
       { value: "1" },
       { value: "1" },
       { value: "1" },
+      { value: "1" },
     ],
-    [{ value: "Variables 2" }, { value: "2" }, { value: "2" }, { value: "2" }],
-    [{ value: "Variables 3" }, { value: "3" }, { value: "3" }, { value: "3" }],
-    [{ value: "Variables 4" }, { value: "4" }, { value: "4" }, { value: "4" }],
-    [{ value: "Variables 5" }, { value: "5" }, { value: "5" }, { value: "5" }],
-    [{ value: "Variables 6" }, { value: "6" }, { value: "6" }, { value: "6" }],
-    [{ value: "Variables 7" }, { value: "7" }, { value: "7" }, { value: "7" }],
-    [{ value: "Variables 8" }, { value: "8" }, { value: "8" }, { value: "8" }],
-    [{ value: "Variables 9" }, { value: "9" }, { value: "9" }, { value: "9" }],
+    [
+      { value: "Variables 2" },
+      { value: "2" },
+      { value: "2" },
+      { value: "2" },
+      { value: "2" },
+    ],
+    [
+      { value: "Variables 3" },
+      { value: "3" },
+      { value: "3" },
+      { value: "3" },
+      { value: "3" },
+    ],
+    [
+      { value: "Variables 4" },
+      { value: "4" },
+      { value: "4" },
+      { value: "4" },
+      { value: "4" },
+    ],
+    [
+      { value: "Variables 5" },
+      { value: "5" },
+      { value: "5" },
+      { value: "5" },
+      { value: "5" },
+    ],
+    [
+      { value: "Variables 6" },
+      { value: "6" },
+      { value: "6" },
+      { value: "6" },
+      { value: "6" },
+    ],
+    [
+      { value: "Variables 7" },
+      { value: "7" },
+      { value: "7" },
+      { value: "7" },
+      { value: "7" },
+    ],
+    [
+      { value: "Variables 8" },
+      { value: "8" },
+      { value: "8" },
+      { value: "8" },
+      { value: "8" },
+    ],
+    [
+      { value: "Variables 9" },
+      { value: "9" },
+      { value: "9" },
+      { value: "9" },
+      { value: "9" },
+    ],
     [
       { value: "Variables 10" },
+      { value: "10" },
       { value: "10" },
       { value: "10" },
       { value: "10" },
@@ -180,7 +231,7 @@ function App() {
     for (let i = 1; i < length; i++) {
       let sum = 0;
       //Number of passes
-      for (let j = 1; j < items[i].length; j++) {
+      for (let j = 2; j < items[i].length; j++) {
         // Accumulate values given
         sum += Number(items[i][j].value);
       }
@@ -286,6 +337,89 @@ function App() {
     }
   };
 
+  // Function to generate de evaluation matrix from Reduced Matrix
+  const generateEvaluationMatrix = function (items) {
+    // Get the length of the data array
+    let length = items.length;
+    // Variable for de SWOT variables
+    let variables = [];
+    // Loop to separate the variables of SWOT Data
+    for (let i = 1; i < length; i++) {
+      variables.push(items[i][0]);
+    }
+    // Clean the SWOT Data (it's empty now)
+    items.splice(0);
+    // Variables for new Evaluation Matrix
+    items.push([{ value: "" }, ...variables]);
+    // Loop to generate the evaluation Matrix
+    for (let i = 1; i < variables.length + 1; i++) {
+      items.push([variables[i - 1]]);
+      for (let j = 1; j <= variables.length; j++) {
+        if (i === j) {
+          items[i].push({ value: "------" });
+        } else {
+          items[i].push({ value: "0" });
+        }
+      }
+    }
+  };
+
+  // Function to obtain the influency in the Evaluation Matrix
+  const evaluateInfluency = function (items) {
+    // Get the length of the data array
+    let length = items.length;
+    // Variable for the sumatory of motricity in each variable
+    let sumMotricity = 0;
+    // array of motricity
+    let motricity = [];
+    // Loop to evaluate motricity
+    for (let i = 1; i < length; i++) {
+      sumMotricity = 0;
+      for (let j = 1; j < length; j++) {
+        if (i !== j) {
+          sumMotricity += Number(items[i][j].value);
+        }
+      }
+      motricity.push(sumMotricity);
+    }
+    // Variable for the sumatory of dependency in each variable
+    let sumDependency = 0;
+    // array of dependency
+    let dependency = [];
+    // Loop to evaluate dependency
+    for (let i = 1; i < length; i++) {
+      sumDependency = 0;
+      for (let j = 1; j < length; j++) {
+        if (i !== j) {
+          sumDependency += Number(items[j][i].value);
+        }
+      }
+      dependency.push(sumDependency);
+    }
+    // Variable for de SWOT variables
+    let variables = [];
+    // Loop to separate the variables of SWOT Data
+    for (let i = 1; i < length; i++) {
+      variables.push(items[i][0]);
+    }
+    // Clean the SWOT Data (it's empty now)
+    items.splice(0);
+    // Variables for new Priorization Matrix
+    items.push([
+      { value: "Variable" },
+      { value: "Motricidad" },
+      { value: "Dependencia" },
+    ]);
+    // Loop to generate the Priorization Matrix
+    for (let i = 1; i < variables.length + 1; i++) {
+      items.push([
+        variables[i - 1],
+        { value: motricity[i - 1] },
+        { value: dependency[i - 1] },
+      ]);
+    }
+  };
+
   const performanceWorkflow = function (option) {
     // slice() creates a new array with the values of swotData
     let items = swotData.slice();
@@ -304,8 +438,10 @@ function App() {
         applyPareto(items);
         break;
       case "4":
+        generateEvaluationMatrix(items);
         break;
       case "5":
+        evaluateInfluency(items);
         break;
       case "6":
         break;
