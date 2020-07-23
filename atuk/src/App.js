@@ -24,8 +24,9 @@ import "./App.sass";
 
 import Hero from "./components/layout/Hero";
 import WorkArea from "./components/WorkArea";
-import { setData } from "react-spreadsheet/dist/actions";
+import SignInSide from "./components/authentication/SignInSide";
 
+//#region asideMenuOptions
 // Option for Aside Menu in the main App
 let asideMenuOptions = {
   "1": "Matriz Inicial",
@@ -36,7 +37,9 @@ let asideMenuOptions = {
   "6": "Clasificación por motricidad y dependencia",
   "7": "Elevación a la potencia",
 };
+//#endregion
 
+//#region Aside Menu Component
 // Aside Menu compotent
 const AsideMenu = (props) => {
   return (
@@ -45,7 +48,7 @@ const AsideMenu = (props) => {
       <ul className="menu-list">
         <li>
           <a
-            href="#"
+            href="/#"
             name="1/"
             onClick={props.handleClick}
             className={props.workAreaOption === "1" ? "is-active" : ""}
@@ -55,7 +58,7 @@ const AsideMenu = (props) => {
           <ul>
             <li>
               <a
-                href="#"
+                href="/#"
                 name="2/"
                 onClick={props.handleClick}
                 className={props.workAreaOption === "2" ? "is-active" : ""}
@@ -70,7 +73,7 @@ const AsideMenu = (props) => {
       <ul className="menu-list">
         <li>
           <a
-            href="#"
+            href="/#"
             name="3/"
             onClick={props.handleClick}
             className={props.workAreaOption === "3" ? "is-active" : ""}
@@ -80,7 +83,7 @@ const AsideMenu = (props) => {
         </li>
         <li>
           <a
-            href="#"
+            href="/#"
             name="4/"
             onClick={props.handleClick}
             className={props.workAreaOption === "4" ? "is-active" : ""}
@@ -90,7 +93,7 @@ const AsideMenu = (props) => {
         </li>
         <li>
           <a
-            href="#"
+            href="/#"
             name="5/"
             onClick={props.handleClick}
             className={props.workAreaOption === "5" ? "is-active" : ""}
@@ -103,7 +106,7 @@ const AsideMenu = (props) => {
       <ul className="menu-list">
         <li>
           <a
-            href="#"
+            href="/#"
             name="6/"
             onClick={props.handleClick}
             className={props.workAreaOption === "6" ? "is-active" : ""}
@@ -113,7 +116,7 @@ const AsideMenu = (props) => {
         </li>
         <li>
           <a
-            href="#"
+            href="/#"
             name="7/"
             onClick={props.handleClick}
             className={props.workAreaOption === "7" ? "is-active" : ""}
@@ -125,7 +128,11 @@ const AsideMenu = (props) => {
       <p className="menu-label">Ayuda</p>
       <ul className="menu-list">
         <li>
-          <a href="https://atuk-blog.netlify.app/" target="_blank">
+          <a
+            href="https://atuk-blog.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Blog
           </a>
         </li>
@@ -133,8 +140,11 @@ const AsideMenu = (props) => {
     </aside>
   );
 };
+//#endregion
 
 function App() {
+  // Sign In variables
+  let [authentication, setAuthentication] = useState(false);
   // Menu & flow state variables
   let [workAreaOption, setWorkAreaOption] = useState("1");
   let [workAreaTitle, setWorkAreaTitle] = useState("Matriz Inicial");
@@ -223,7 +233,6 @@ function App() {
   ]);
 
   // Functions to use in the SWOT workflow
-
   // Function to add row "Total" with calculation in SWOT data
   const calculateTotals = function (items) {
     // Add column fot Total
@@ -466,6 +475,8 @@ function App() {
         break;
       case "7":
         break;
+      default:
+        break;
     }
     setSwotData(items);
   };
@@ -529,36 +540,53 @@ function App() {
     setPareto("80");
   }, []);
 
-  return (
-    <React.Fragment>
-      <Hero></Hero>
-      <div className="tile is-ancestor mt-2 mx-3">
-        <div className="tile is-parent">
-          <article className="tile is-child notification is-info">
-            <AsideMenu
-              handleClick={handleAsideMenuClick}
-              workAreaOption={workAreaOption}
-            ></AsideMenu>
-          </article>
-        </div>
-        <div className="tile is-9">
+  //#region Render App component
+  let renderedAppSection;
+  if (!authentication) {
+    renderedAppSection = (
+      <div className="container" id="signIn">
+        <SignInSide setAuthentication={setAuthentication}></SignInSide>
+      </div>
+    );
+  } else {
+    renderedAppSection = (
+      <div className="container" id="mainArea">
+        <Hero></Hero>
+        <div className="tile is-ancestor mt-2 mx-3">
           <div className="tile is-parent">
-            <div className="tile is-child notification">
-              <WorkArea
+            <article className="tile is-child notification is-info">
+              <AsideMenu
+                handleClick={handleAsideMenuClick}
                 workAreaOption={workAreaOption}
-                swotData={swotData}
-                setSwotData={setSwotData}
-                titleName={workAreaTitle}
-                handleBackClick={handleBackClick}
-                handleContinueClick={handleContinueClick}
-                handleChange={handleChange}
-                dataGraph={dataGraph}
-              />
+              ></AsideMenu>
+            </article>
+          </div>
+          <div className="tile is-9">
+            <div className="tile is-parent">
+              <div className="tile is-child notification">
+                <WorkArea
+                  workAreaOption={workAreaOption}
+                  swotData={swotData}
+                  setSwotData={setSwotData}
+                  titleName={workAreaTitle}
+                  handleBackClick={handleBackClick}
+                  handleContinueClick={handleContinueClick}
+                  handleChange={handleChange}
+                  dataGraph={dataGraph}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    );
+  }
+  //#endregion
+
+  return (
+    <>
+      <div className="container">{renderedAppSection}</div>
+    </>
   );
 }
 

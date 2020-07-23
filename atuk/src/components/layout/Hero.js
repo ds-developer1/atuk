@@ -56,10 +56,14 @@ const Hero = () => {
             <div className="container">
               <ul>
                 <li className="">
-                  <a href="#">Acerca de</a>
+                  <a href="/#">Acerca de</a>
                 </li>
                 <li>
-                  <a href="https://atuk-blog.netlify.app/" target="_blank">
+                  <a
+                    href="https://atuk-blog.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Ayuda
                   </a>
                 </li>
