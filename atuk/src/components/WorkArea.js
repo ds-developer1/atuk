@@ -66,9 +66,9 @@ const RenderArea = (props) => {
 const WorkArea = (props) => {
   return (
     <React.Fragment>
-      <p className="title">Atuk</p>
-      <p className="subtitle">{props.titleName}</p>
-      <div className="container">
+      <div className="container" id="report">
+        <p className="title">Atuk</p>
+        <p className="subtitle">{props.titleName}</p>
         <RenderArea
           workAreaOption={props.workAreaOption}
           swotData={props.swotData}

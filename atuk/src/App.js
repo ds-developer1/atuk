@@ -17,14 +17,20 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import React, { useState, useEffect } from "react";
+// Styles
 import "./App.css";
 import "./App.sass";
 //import logo from "./img/logoAtuk.svg";
 //import github_logo from "./img/github-icon.svg";
 
+// Components for the process
 import Hero from "./components/layout/Hero";
 import WorkArea from "./components/WorkArea";
 import SignInSide from "./components/authentication/SignInSide";
+
+// Libraries for PDF Report
+import * as jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 //#region asideMenuOptions
 // Option for Aside Menu in the main App
@@ -474,6 +480,19 @@ function App() {
         setDataGraph(data);
         break;
       case "7":
+        // Convert HTML rendered to SVG in canvas
+        html2canvas(document.getElementById("report")).then(function (canvas) {
+          // Convert SVG in canvas to PNG
+          const imgData = canvas.toDataURL("image/png");
+          console.log("data: " + imgData);
+          console.log(canvas);
+          // Convert PNG to PDF to download
+          const pdf = new jsPDF({
+            orientation: "landscape",
+          });
+          pdf.addImage(imgData, "PNG", 10, 10);
+          pdf.save("download.pdf");
+        });
         break;
       default:
         break;
