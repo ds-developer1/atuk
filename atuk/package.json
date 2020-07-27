@@ -26,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "doc": "react-doc-generator ./src -i ./src/index.js -i ./src/serviceWorker.js -i ./src/setupTests.js -i ./src/App.test.js -o DOCUMENTATION.md"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,5 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

@@ -148,6 +148,12 @@ const AsideMenu = (props) => {
 };
 //#endregion
 
+/**
+ * Represents a book.
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ */
 function App() {
   // Sign In variables
   let [authentication, setAuthentication] = useState(false);
@@ -480,7 +486,9 @@ function App() {
         setDataGraph(data);
         break;
       case "7":
-        // Convert HTML rendered to SVG in canvas
+        /**
+         * Convert HTML rendered to SVG in canvas
+         * */
         html2canvas(document.getElementById("report")).then(function (canvas) {
           // Convert SVG in canvas to PNG
           const imgData = canvas.toDataURL("image/png");
@@ -602,11 +610,7 @@ function App() {
   }
   //#endregion
 
-  return (
-    <>
-      <div className="container">{renderedAppSection}</div>
-    </>
-  );
+  return <div className="container">{renderedAppSection}</div>;
 }
 
 export default App;

@@ -46,11 +46,7 @@ const Graph = (props) => {
       },
     ],
   };
-  return (
-    <>
-      <Bubble data={data} />
-    </>
-  );
+  return <Bubble data={data} />;
 };
 
 export default Graph;
