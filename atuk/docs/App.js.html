@@ -1,4 +1,32 @@
-// Atuk.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Atuk.
 // Copyright (C) 2020 Alan Quimbita, Esteban Molina, Shakira Cofre.
 //
 // App.js is part of Atuk.
@@ -14,7 +42,7 @@
 // GNU Affero General Public License for more details.
 //
 // You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// along with this program.  If not, see &lt;https://www.gnu.org/licenses/>.
 
 import React, { useState, useEffect } from "react";
 // Styles
@@ -56,101 +84,101 @@ let asideMenuOptions = {
  */
 const AsideMenu = (props) => {
   return (
-    <aside className="menu">
-      <p className="menu-label is-white">Entrada</p>
-      <ul className="menu-list">
-        <li>
-          <a
+    &lt;aside className="menu">
+      &lt;p className="menu-label is-white">Entrada&lt;/p>
+      &lt;ul className="menu-list">
+        &lt;li>
+          &lt;a
             href="/#"
             name="1/"
             onClick={props.handleClick}
             className={props.workAreaOption === "1" ? "is-active" : ""}
           >
             Matriz inicial
-          </a>
-          <ul>
-            <li>
-              <a
+          &lt;/a>
+          &lt;ul>
+            &lt;li>
+              &lt;a
                 href="/#"
                 name="2/"
                 onClick={props.handleClick}
                 className={props.workAreaOption === "2" ? "is-active" : ""}
               >
                 Índice de Pareto
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p className="menu-label">Procesamiento</p>
-      <ul className="menu-list">
-        <li>
-          <a
+              &lt;/a>
+            &lt;/li>
+          &lt;/ul>
+        &lt;/li>
+      &lt;/ul>
+      &lt;p className="menu-label">Procesamiento&lt;/p>
+      &lt;ul className="menu-list">
+        &lt;li>
+          &lt;a
             href="/#"
             name="3/"
             onClick={props.handleClick}
             className={props.workAreaOption === "3" ? "is-active" : ""}
           >
             Matriz Reducida
-          </a>
-        </li>
-        <li>
-          <a
+          &lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a
             href="/#"
             name="4/"
             onClick={props.handleClick}
             className={props.workAreaOption === "4" ? "is-active" : ""}
           >
             Evaluación motricidad y dependencia
-          </a>
-        </li>
-        <li>
-          <a
+          &lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a
             href="/#"
             name="5/"
             onClick={props.handleClick}
             className={props.workAreaOption === "5" ? "is-active" : ""}
           >
             Priorización de variables
-          </a>
-        </li>
-      </ul>
-      <p className="menu-label">Salida</p>
-      <ul className="menu-list">
-        <li>
-          <a
+          &lt;/a>
+        &lt;/li>
+      &lt;/ul>
+      &lt;p className="menu-label">Salida&lt;/p>
+      &lt;ul className="menu-list">
+        &lt;li>
+          &lt;a
             href="/#"
             name="6/"
             onClick={props.handleClick}
             className={props.workAreaOption === "6" ? "is-active" : ""}
           >
             Clasificación por motricidad y dependencia
-          </a>
-        </li>
-        <li>
-          <a
+          &lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a
             href="/#"
             name="7/"
             onClick={props.handleClick}
             className={props.workAreaOption === "7" ? "is-active" : ""}
           >
             Elevación a la potencia
-          </a>
-        </li>
-      </ul>
-      <p className="menu-label">Ayuda</p>
-      <ul className="menu-list">
-        <li>
-          <a
+          &lt;/a>
+        &lt;/li>
+      &lt;/ul>
+      &lt;p className="menu-label">Ayuda&lt;/p>
+      &lt;ul className="menu-list">
+        &lt;li>
+          &lt;a
             href="https://atuk-blog.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
             Blog
-          </a>
-        </li>
-      </ul>
-    </aside>
+          &lt;/a>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/aside>
   );
 };
 //#endregion
@@ -162,8 +190,8 @@ const AsideMenu = (props) => {
  * @param {string} workAreaOption - Controls the current step of the mathematical SWOT
  * @param {string} workAreaTitle - Controls the current step title of the mathematical SWOT
  * @param {string} pareto - Defines the value to use in order to apply Pareto
- * @param {Array.<string>} dataGraph - Contains the result of the mathematical SWOT to be represented in a graph
- * @param {Array.<string>} swotData - Contains the data used within the Mathematical SWOT
+ * @param {Array.&lt;string>} dataGraph - Contains the result of the mathematical SWOT to be represented in a graph
+ * @param {Array.&lt;string>} swotData - Contains the data used within the Mathematical SWOT
  * @param {JSX} renderedAppSection - Cotains the area rendered in App component
  * @param {function(items)} calculateTotals - Function to add row "Total" with calculation in SWOT data
  * @param {function(items)} orderSwotData - Function to sort the data SWOT in descending order
@@ -182,7 +210,7 @@ const AsideMenu = (props) => {
 function App() {
   // Sign In variables
   let [authentication, setAuthentication] = useState(false);
-  // Menu & flow state variables
+  // Menu &amp; flow state variables
   let [workAreaOption, setWorkAreaOption] = useState("1");
   let [workAreaTitle, setWorkAreaTitle] = useState("Matriz Inicial");
   let [pareto, setPareto] = useState("80");
@@ -273,18 +301,18 @@ function App() {
   /**
    * Function to add row "Total" with calculation in SWOT data
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const calculateTotals = function (items) {
     // Add column fot Total
     items[0].push({ value: "Total" });
     // Get the length of the data array
     let length = items.length;
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       let sum = 0;
       //Number of passes
-      for (let j = 2; j < items[i].length; j++) {
+      for (let j = 2; j &lt; items[i].length; j++) {
         // Accumulate values given
         sum += Number(items[i][j].value);
       }
@@ -298,20 +326,20 @@ function App() {
   /**
    * Function to sort the data SWOT in descending order
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const orderSwotData = function (items) {
     // Get the length of the data array
     let length = items.length;
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       //Number of passes
-      for (let j = 1; j < length - i; j++) {
-        //Notice that j < (length - i)
+      for (let j = 1; j &lt; length - i; j++) {
+        //Notice that j &lt; (length - i)
         //Compare the adjacent positions
         let lastIndex = items[j].length - 1;
         if (
-          Number(items[j][lastIndex].value) <
+          Number(items[j][lastIndex].value) &lt;
           Number(items[j + 1][lastIndex].value)
         ) {
           //Swap the numbers
@@ -326,8 +354,8 @@ function App() {
   /**
    * Function to add row "Porcentaje" with calculation in SWOT data
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const calculatePercentages = function (items) {
     // Add column for 'Porcentaje'
@@ -338,12 +366,12 @@ function App() {
     let lastIndex = items[1].length - 1 || 0;
     // Variable for sumatory
     let sum = 0;
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       sum += Number(items[i][lastIndex].value);
     }
     // Initialize variable percentage
     let percentage = 0;
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       // Percentaje to zero
       percentage = 0;
       // Calculate value for percentage
@@ -358,8 +386,8 @@ function App() {
   /**
    * Function to add row "Porcentaje Acumulado" with calculation in SWOT data
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const calculateAccumulatedPercentages = function (items) {
     // Add column for 'Porcentaje Acumulado'
@@ -373,7 +401,7 @@ function App() {
     items[1].push({ value: p1 });
     // Initialize variable percentage
     let percentage = 0;
-    for (let i = 2; i < length; i++) {
+    for (let i = 2; i &lt; length; i++) {
       // Percentaje to zero
       percentage = 0;
       // Calculate accumulated percentage
@@ -390,8 +418,8 @@ function App() {
   /**
    * Function to apply Pareto Index in SWOT data
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const applyPareto = function (items) {
     // Get the length of the data array
@@ -399,13 +427,13 @@ function App() {
     // Variable to count rows to delete
     let count = 0;
     // Loop to count to delete rows based on Pareto Index
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       if (Number(items[i][items[i].length - 1].value) > Number(pareto)) {
         count++;
       }
     }
     // Delete row according Pareto Index
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i &lt; count; i++) {
       items.pop();
     }
   };
@@ -413,8 +441,8 @@ function App() {
   /**
    * Function to generate de evaluation matrix from Reduced Matrix
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const generateEvaluationMatrix = function (items) {
     // Get the length of the data array
@@ -422,7 +450,7 @@ function App() {
     // Variable for de SWOT variables
     let variables = [];
     // Loop to separate the variables of SWOT Data
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       variables.push(items[i][0]);
     }
     // Clean the SWOT Data (it's empty now)
@@ -430,9 +458,9 @@ function App() {
     // Variables for new Evaluation Matrix
     items.push([{ value: "" }, ...variables]);
     // Loop to generate the evaluation Matrix
-    for (let i = 1; i < variables.length + 1; i++) {
+    for (let i = 1; i &lt; variables.length + 1; i++) {
       items.push([variables[i - 1]]);
-      for (let j = 1; j <= variables.length; j++) {
+      for (let j = 1; j &lt;= variables.length; j++) {
         if (i === j) {
           items[i].push({ value: "------" });
         } else {
@@ -445,8 +473,8 @@ function App() {
   /**
    * Function to obtain the influency in the Evaluation Matrix
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const evaluateInfluency = function (items) {
     // Get the length of the data array
@@ -456,9 +484,9 @@ function App() {
     // array of motricity
     let motricity = [];
     // Loop to evaluate motricity
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       sumMotricity = 0;
-      for (let j = 1; j < length; j++) {
+      for (let j = 1; j &lt; length; j++) {
         if (i !== j) {
           sumMotricity += Number(items[i][j].value);
         }
@@ -470,9 +498,9 @@ function App() {
     // array of dependency
     let dependency = [];
     // Loop to evaluate dependency
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       sumDependency = 0;
-      for (let j = 1; j < length; j++) {
+      for (let j = 1; j &lt; length; j++) {
         if (i !== j) {
           sumDependency += Number(items[j][i].value);
         }
@@ -482,7 +510,7 @@ function App() {
     // Variable for de SWOT variables
     let variables = [];
     // Loop to separate the variables of SWOT Data
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i &lt; length; i++) {
       variables.push(items[i][0]);
     }
     // Clean the SWOT Data (it's empty now)
@@ -494,7 +522,7 @@ function App() {
       { value: "Motricidad" },
     ]);
     // Loop to generate the Priorization Matrix
-    for (let i = 1; i < variables.length + 1; i++) {
+    for (let i = 1; i &lt; variables.length + 1; i++) {
       items.push([
         variables[i - 1],
         { value: dependency[i - 1] },
@@ -506,14 +534,14 @@ function App() {
   /**
    * Function to generate the data to be presented in a Bubble Chart
    * @function
-   * @param {Array.<Object>} items - Swot Data of {@link App}
-   * @returns {Array.<Object>}
+   * @param {Array.&lt;Object>} items - Swot Data of {@link App}
+   * @returns {Array.&lt;Object>}
    */
   const generateDataGraph = function (items, data) {
     // Variable for radius (in pixels) for bubbles
     let r = 25;
     // Loop to gather the data to graph from SWOT data
-    for (let i = 1; i < items.length; i++) {
+    for (let i = 1; i &lt; items.length; i++) {
       data.push({
         x: Number(items[i][1].value),
         y: Number(items[i][2].value),
@@ -578,7 +606,7 @@ function App() {
     setSwotData(items);
   };
 
-  // Buttons & Aside Menu handle functions
+  // Buttons &amp; Aside Menu handle functions
   /**
    * Handle function for Aside Menu
    * @function
@@ -587,7 +615,7 @@ function App() {
   const handleAsideMenuClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    // Gets the number of the name <a> element in Aside Menu Component
+    // Gets the number of the name &lt;a> element in Aside Menu Component
     let [option] = e.target.name.split("/");
     // Updates the option of the Work Area
     setWorkAreaOption(option);
@@ -623,7 +651,7 @@ function App() {
     // Transforms workAreaOption to Number
     var option = Number(workAreaOption);
     // Compares the current value of the option
-    if (option < Object.keys(asideMenuOptions).length) {
+    if (option &lt; Object.keys(asideMenuOptions).length) {
       // Increase the value of option
       option++;
       // Updates the option of the Work Area
@@ -660,27 +688,27 @@ function App() {
   let renderedAppSection;
   if (!authentication) {
     renderedAppSection = (
-      <div className="container" id="signIn">
-        <SignInSide setAuthentication={setAuthentication}></SignInSide>
-      </div>
+      &lt;div className="container" id="signIn">
+        &lt;SignInSide setAuthentication={setAuthentication}>&lt;/SignInSide>
+      &lt;/div>
     );
   } else {
     renderedAppSection = (
-      <div className="container" id="mainArea">
-        <Hero></Hero>
-        <div className="tile is-ancestor mt-2 mx-3">
-          <div className="tile is-parent">
-            <article className="tile is-child notification is-info">
-              <AsideMenu
+      &lt;div className="container" id="mainArea">
+        &lt;Hero>&lt;/Hero>
+        &lt;div className="tile is-ancestor mt-2 mx-3">
+          &lt;div className="tile is-parent">
+            &lt;article className="tile is-child notification is-info">
+              &lt;AsideMenu
                 handleClick={handleAsideMenuClick}
                 workAreaOption={workAreaOption}
-              ></AsideMenu>
-            </article>
-          </div>
-          <div className="tile is-9">
-            <div className="tile is-parent">
-              <div className="tile is-child notification">
-                <WorkArea
+              >&lt;/AsideMenu>
+            &lt;/article>
+          &lt;/div>
+          &lt;div className="tile is-9">
+            &lt;div className="tile is-parent">
+              &lt;div className="tile is-child notification">
+                &lt;WorkArea
                   workAreaOption={workAreaOption}
                   swotData={swotData}
                   setSwotData={setSwotData}
@@ -690,16 +718,39 @@ function App() {
                   handleChange={handleChange}
                   dataGraph={dataGraph}
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
     );
   }
   //#endregion
 
-  return <div className="container">{renderedAppSection}</div>;
+  return &lt;div className="container">{renderedAppSection}&lt;/div>;
 }
 
 export default App;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-AsideMenu.html">AsideMenu</a></li><li><a href="module-Copyright.html">Copyright</a></li><li><a href="module-Evaluation.html">Evaluation</a></li><li><a href="module-Graph.html">Graph</a></li><li><a href="module-Hero.html">Hero</a></li><li><a href="module-InputTable.html">InputTable</a></li><li><a href="module-Pareto.html">Pareto</a></li><li><a href="module-Priorization.html">Priorization</a></li><li><a href="module-ReducedMatrix.html">ReducedMatrix</a></li><li><a href="module-RenderArea.html">RenderArea</a></li><li><a href="module-SignInSide.html">SignInSide</a></li><li><a href="module-WorkArea.html">WorkArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asideMenuOptions">asideMenuOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Jul 28 2020 11:42:02 GMT-0500 (GMT-05:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

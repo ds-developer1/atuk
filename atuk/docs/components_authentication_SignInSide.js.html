@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/authentication/SignInSide.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/authentication/SignInSide.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -21,14 +49,14 @@ import db from "./db.json";
  */
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    &lt;Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      &lt;Link color="inherit" href="https://material-ui.com/">
         Atuk
-      </Link>{" "}
+      &lt;/Link>{" "}
       {new Date().getFullYear()}
       {"."}
-    </Typography>
+    &lt;/Typography>
   );
 }
 /**
@@ -84,7 +112,7 @@ export default function SignInSide(props) {
   const [emailErrorText, setEmailErrorText] = React.useState("");
   const [passwordErrorText, setPasswordErrorText] = React.useState("");
   const classes = useStyles();
-
+  
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -97,7 +125,7 @@ export default function SignInSide(props) {
       } else {
         setPasswordErrorText("");
         const authentication = db.some(
-          (user) => user.email === email && user.password === password
+          (user) => user.email === email &amp;&amp; user.password === password
         );
         if (!authentication) {
           alert("Email o Password incorrecto.");
@@ -110,19 +138,19 @@ export default function SignInSide(props) {
   };
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
+    &lt;Grid container component="main" className={classes.root}>
+      &lt;CssBaseline />
+      &lt;Grid item xs={false} sm={4} md={7} className={classes.image} />
+      &lt;Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        &lt;div className={classes.paper}>
+          &lt;Avatar className={classes.avatar}>
+            &lt;LockOutlinedIcon />
+          &lt;/Avatar>
+          &lt;Typography component="h1" variant="h5">
             Atuk
-          </Typography>
-          <form className={classes.form} noValidate onSubmit={onSubmit}>
-            <TextField
+          &lt;/Typography>
+          &lt;form className={classes.form} noValidate onSubmit={onSubmit}>
+            &lt;TextField
               variant="outlined"
               margin="normal"
               required
@@ -137,7 +165,7 @@ export default function SignInSide(props) {
               helperText={emailErrorText}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextField
+            &lt;TextField
               variant="outlined"
               margin="normal"
               required
@@ -152,11 +180,11 @@ export default function SignInSide(props) {
               helperText={passwordErrorText}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+            &lt;FormControlLabel
+              control={&lt;Checkbox value="remember" color="primary" />}
               label="Mantener sesión abierta"
             />
-            <Button
+            &lt;Button
               type="submit"
               fullWidth
               variant="contained"
@@ -164,27 +192,50 @@ export default function SignInSide(props) {
               className={classes.submit}
             >
               Entrar
-            </Button>
+            &lt;/Button>
             {/*
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
+            &lt;Grid container>
+              &lt;Grid item xs>
+                &lt;Link href="#" variant="body2">
                   Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
+                &lt;/Link>
+              &lt;/Grid>
+              &lt;Grid item>
+                &lt;Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+                &lt;/Link>
+              &lt;/Grid>
+            &lt;/Grid>
             */}
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
-        </div>
-      </Grid>
-    </Grid>
+            &lt;Box mt={5}>
+              &lt;Copyright />
+            &lt;/Box>
+          &lt;/form>
+        &lt;/div>
+      &lt;/Grid>
+    &lt;/Grid>
   );
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-AsideMenu.html">AsideMenu</a></li><li><a href="module-Copyright.html">Copyright</a></li><li><a href="module-Evaluation.html">Evaluation</a></li><li><a href="module-Graph.html">Graph</a></li><li><a href="module-Hero.html">Hero</a></li><li><a href="module-InputTable.html">InputTable</a></li><li><a href="module-Pareto.html">Pareto</a></li><li><a href="module-Priorization.html">Priorization</a></li><li><a href="module-ReducedMatrix.html">ReducedMatrix</a></li><li><a href="module-RenderArea.html">RenderArea</a></li><li><a href="module-SignInSide.html">SignInSide</a></li><li><a href="module-WorkArea.html">WorkArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asideMenuOptions">asideMenuOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Jul 28 2020 11:42:02 GMT-0500 (GMT-05:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

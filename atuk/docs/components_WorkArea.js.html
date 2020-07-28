@@ -1,4 +1,32 @@
-// Copyright (C) 2020 Alan Quimbita, Esteban Molina, Shakira Cofre.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/WorkArea.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/WorkArea.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Copyright (C) 2020 Alan Quimbita, Esteban Molina, Shakira Cofre.
 //
 // WorkArea.js is part of Atuk.
 //
@@ -13,7 +41,7 @@
 // GNU Affero General Public License for more details.
 //
 // You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// along with this program.  If not, see &lt;https://www.gnu.org/licenses/>.
 
 import React from "react";
 import Input from "./input/InputTable";
@@ -30,8 +58,8 @@ import Graph from "./results/Graph";
  * @param {string} props.workAreaOption - Controls the current step of the mathematical SWOT
  * @param {string} props.workAreaTitle - Controls the current step title of the mathematical SWOT
  * @param {string} props.pareto - Defines the value to use in order to apply Pareto
- * @param {Array.<string>} props.dataGraph - Contains the result of the mathematical SWOT to be represented in a graph
- * @param {Array.<string>} props.swotData - Contains the data used within the Mathematical SWOT
+ * @param {Array.&lt;string>} props.dataGraph - Contains the result of the mathematical SWOT to be represented in a graph
+ * @param {Array.&lt;string>} props.swotData - Contains the data used within the Mathematical SWOT
  * @param {function(event)} props.handleAsideMenuClick - Handle function for Aside Menu
  * @param {function(event)} props.handleBackClick - Handle function for Back Click Button in WorkArea
  * @param {function(event)} props.handleContinueClick - Handle function for Continue Click Button in WorkArea
@@ -41,11 +69,11 @@ const RenderArea = (props) => {
   switch (props.workAreaOption) {
     case "1":
       return (
-        <Input swotData={props.swotData} setSwotData={props.setSwotData} />
+        &lt;Input swotData={props.swotData} setSwotData={props.setSwotData} />
       );
     case "2":
       return (
-        <Pareto
+        &lt;Pareto
           handleChange={props.handleChange}
           swotData={props.swotData}
           setSwotData={props.setSwotData}
@@ -53,27 +81,27 @@ const RenderArea = (props) => {
       );
     case "3":
       return (
-        <ReducedMatrix
+        &lt;ReducedMatrix
           swotData={props.swotData}
           setSwotData={props.setSwotData}
         />
       );
     case "4":
       return (
-        <Evaluation swotData={props.swotData} setSwotData={props.setSwotData} />
+        &lt;Evaluation swotData={props.swotData} setSwotData={props.setSwotData} />
       );
     case "5":
       return (
-        <Priorization
+        &lt;Priorization
           swotData={props.swotData}
           setSwotData={props.setSwotData}
         />
       );
     case "6":
-      return <Graph dataGraph={props.dataGraph} />;
+      return &lt;Graph dataGraph={props.dataGraph} />;
     case "7":
     default:
-      return <Graph dataGraph={props.dataGraph} />;
+      return &lt;Graph dataGraph={props.dataGraph} />;
   }
 };
 
@@ -84,44 +112,67 @@ const RenderArea = (props) => {
  */
 const WorkArea = (props) => {
   return (
-    <React.Fragment>
-      <div className="container" id="report">
-        <p className="title">Atuk</p>
-        <p className="subtitle">{props.titleName}</p>
-        <RenderArea
+    &lt;React.Fragment>
+      &lt;div className="container" id="report">
+        &lt;p className="title">Atuk&lt;/p>
+        &lt;p className="subtitle">{props.titleName}&lt;/p>
+        &lt;RenderArea
           workAreaOption={props.workAreaOption}
           swotData={props.swotData}
           setSwotData={props.setSwotData}
           handleChange={props.handleChange}
           dataGraph={props.dataGraph}
-        ></RenderArea>
-      </div>
-      <div className="container">
-        <div className="field is-grouped">
+        >&lt;/RenderArea>
+      &lt;/div>
+      &lt;div className="container">
+        &lt;div className="field is-grouped">
           {/*
-          <div className="control">
-            <button
+          &lt;div className="control">
+            &lt;button
               className="button is-grey-ligth"
               name="btnBack"
               onClick={props.handleBackClick}
             >
               Atrás
-            </button>
-          </div>
+            &lt;/button>
+          &lt;/div>
           */}
-          <div className="control">
-            <div
+          &lt;div className="control">
+            &lt;div
               className="button is-link mt-3"
               name="btnContinue"
               onClick={props.handleContinueClick}
             >
               Continuar
-            </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/React.Fragment>
   );
 };
 
 export default WorkArea;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-AsideMenu.html">AsideMenu</a></li><li><a href="module-Copyright.html">Copyright</a></li><li><a href="module-Evaluation.html">Evaluation</a></li><li><a href="module-Graph.html">Graph</a></li><li><a href="module-Hero.html">Hero</a></li><li><a href="module-InputTable.html">InputTable</a></li><li><a href="module-Pareto.html">Pareto</a></li><li><a href="module-Priorization.html">Priorization</a></li><li><a href="module-ReducedMatrix.html">ReducedMatrix</a></li><li><a href="module-RenderArea.html">RenderArea</a></li><li><a href="module-SignInSide.html">SignInSide</a></li><li><a href="module-WorkArea.html">WorkArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asideMenuOptions">asideMenuOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Jul 28 2020 11:42:02 GMT-0500 (GMT-05:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

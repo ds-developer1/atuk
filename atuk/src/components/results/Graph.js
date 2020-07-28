@@ -18,7 +18,21 @@
 
 import React from "react";
 import { Bubble } from "react-chartjs-2";
-
+/**
+ * The Graph Component is used to shos the graphicla result of the Mathematical SWOT
+ * @module Graph
+ * @param {*} props - includes dataGraph from App component
+ * @param {Array.<Object>} props.dataGraph - The values to graphic after being sanitized
+ * @param {Object} data - Contains the parameters to generate the Bubble Data
+ * @param {Array.<string>} data.labels - Contains the labels to be presented in the chart
+ * @param {Array.<Object>} data.datasets - Establishes the visual parameters of the chart
+ * @param {Array.<Object>} data.datasets[0].label - The label of the current Dataset
+ * @param {Array.<Object>} data.datasets[0].fill - Property to color inside the bubble chart
+ * @param {Array.<Object>} data.datasets[0].lineTension - Grossor of lines
+ * @param {Array.<Object>} data.datasets[0].backgroundColor - Color of the chart's background
+ * @param {Array.<Object>} data.datasets[0].borderColor - Color of the chart's borders
+ * @param {Array.<Object>} data.datasets[0].data - Data to be used in the bubble chart
+ */
 const Graph = (props) => {
   let data = {
     labels: ["Variables del FODA Matemático"],

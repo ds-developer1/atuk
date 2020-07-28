@@ -21,6 +21,10 @@ import logo from "../../img/logoAtuk.svg";
 import github_logo from "../../img/github-icon.svg";
 // import atuk_logo from "../../img/atuk.svg";
 
+/**
+ * The Hero component is the top navbar area
+ * @module Hero
+ */
 const Hero = () => {
   return (
     <section className="hero is-info">

@@ -18,7 +18,16 @@
 
 import React, { useCallback } from "react";
 import Spreadsheet from "react-spreadsheet";
-
+/**
+ * The input table used in the first step of Mathematical SWOT
+ * @module InputTable
+ * @param {*} props - includes the setSwotData from the App Component
+ * @param {function()} props.setSwotData - Used to change the SWOT data in the App component
+ * @param {function()} addColumn - Adds a column in the SWOT matrix
+ * @param {function()} addRow - Adds a row in the SWOT matrix
+ * @param {function()} removeColumn - Removes a column in the SWOT matrix
+ * @param {function()} removeRow - Removes a row in the SWOT matrix
+ */
 const InputTable = (props) => {
   const setSwotData = props.setSwotData;
   const addColumn = useCallback(

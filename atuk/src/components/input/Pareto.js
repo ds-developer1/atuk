@@ -18,7 +18,14 @@
 
 import React from "react";
 import Spreadsheet from "react-spreadsheet";
-
+/**
+ * Component used to define Pareto's value and apply to SWOT matrix
+ * @module Pareto
+ * @param {*} props - includes the handleChange event from the App Component
+ * @param {function()} props.handleChange - Changes the value of Pareto variable in App Component
+ * @param {function()} props.swotData - Used to show the current Swot Data in Pareto Component
+ * @param {function()} props.setSwotData - Changes the current Swot Data in App Component
+ */
 const Pareto = (props) => {
   return (
     <React.Fragment>

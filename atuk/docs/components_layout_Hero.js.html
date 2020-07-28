@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/layout/Hero.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/layout/Hero.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Atuk.
+// Copyright (C) 2020 Alan Quimbita, Esteban Molina, Shakira Cofre.
+//
+// Hero.js is part of Atuk.
+//
+// Atuk is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published
+// by the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see &lt;https://www.gnu.org/licenses/>.
+
+import React from "react";
+import logo from "../../img/logoAtuk.svg";
+import github_logo from "../../img/github-icon.svg";
+// import atuk_logo from "../../img/atuk.svg";
+
+/**
+ * The Hero component is the top navbar area
+ * @module Hero
+ */
+const Hero = () => {
+  return (
+    &lt;section className="hero is-info">
+      &lt;div className="hero-head">&lt;/div>
+
+      &lt;div className="hero-body level">
+        &lt;div className="level-item has-text-centered">
+          &lt;nav className="tabs is-boxed is-fullwidth">
+            &lt;div className="container">
+              &lt;ul>
+                &lt;li className="is-active">
+                  &lt;a href="https://atuk.netlify.app/">Inicio&lt;/a>
+                &lt;/li>
+                &lt;li>
+                  &lt;a href="https://atuk-blog.netlify.app/foda">
+                    FODA Matemático
+                  &lt;/a>
+                &lt;/li>
+                &lt;li>
+                  &lt;a href="https://atuk-blog.netlify.app/planificacion">
+                    Planificación Estratégica
+                  &lt;/a>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/nav>
+        &lt;/div>
+        &lt;div className="level-item has-text-centered">
+          &lt;img src={logo} style={{ maxHeight: "192px" }} alt="logo" />
+        &lt;/div>
+        &lt;div className="level-item has-text-centered">
+          &lt;nav className="tabs is-boxed is-fullwidth">
+            &lt;div className="container">
+              &lt;ul>
+                &lt;li className="">
+                  &lt;a href="/#">Acerca de&lt;/a>
+                &lt;/li>
+                &lt;li>
+                  &lt;a
+                    href="https://atuk-blog.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ayuda
+                  &lt;/a>
+                &lt;/li>
+                &lt;li>
+                  &lt;a
+                    href="https://github.com/ds-developer1/atuk.git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    &lt;span>
+                      &lt;img
+                        src={github_logo}
+                        style={{ maxHeight: "32px" }}
+                        alt="github-logo"
+                      />
+                    &lt;/span>
+                  &lt;/a>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/nav>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;div className="hero-foot">&lt;/div>
+    &lt;/section>
+  );
+};
+
+export default Hero;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-AsideMenu.html">AsideMenu</a></li><li><a href="module-Copyright.html">Copyright</a></li><li><a href="module-Evaluation.html">Evaluation</a></li><li><a href="module-Graph.html">Graph</a></li><li><a href="module-Hero.html">Hero</a></li><li><a href="module-InputTable.html">InputTable</a></li><li><a href="module-Pareto.html">Pareto</a></li><li><a href="module-Priorization.html">Priorization</a></li><li><a href="module-ReducedMatrix.html">ReducedMatrix</a></li><li><a href="module-RenderArea.html">RenderArea</a></li><li><a href="module-SignInSide.html">SignInSide</a></li><li><a href="module-WorkArea.html">WorkArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asideMenuOptions">asideMenuOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Jul 28 2020 11:42:02 GMT-0500 (GMT-05:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

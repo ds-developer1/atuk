@@ -18,7 +18,13 @@
 
 import React from "react";
 import Spreadsheet from "react-spreadsheet";
-
+/**
+ * The evaluation component lets establish the values of dependecy and motricity
+ * @module Evaluation
+ * @param {*} props - includes swotData, setSwotData from the App Component
+ * @param {Array.<string>} props.swotData - Used to show the current SWOT data
+ * @param {function()} props.setSwotData - Used to change the current SWOT data
+ */
 const Evaluation = (props) => {
   return (
     <React.Fragment>

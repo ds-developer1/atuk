@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: App</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: App</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Main component of the program</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>authentication</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates if the user si logged in</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workAreaOption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Controls the current step of the mathematical SWOT</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workAreaTitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Controls the current step title of the mathematical SWOT</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pareto</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Defines the value to use in order to apply Pareto</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataGraph</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the result of the mathematical SWOT to be represented in a graph</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>swotData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the data used within the Mathematical SWOT</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>renderedAppSection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSX</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Cotains the area rendered in App component</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calculateTotals</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to add row &quot;Total&quot; with calculation in SWOT data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>orderSwotData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to sort the data SWOT in descending order</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calculatePercentages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to add row &quot;Porcentaje&quot; with calculation in SWOT data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calculateAccumulatedPercentages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to add row &quot;Porcentaje Acumulado&quot; with calculation in SWOT data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>applyPareto</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to apply Pareto Index in SWOT data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>generateEvaluationMatrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to generate de evaluation matrix from Reduced Matrix</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>evaluateInfluency</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to obtain the influency in the Evaluation Matrix</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>generateDataGraph</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to generate the data to be presented in a Bubble Chart</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>performanceWorkflow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to control de workflow of the Mathematical Swot</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleAsideMenuClick</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Handle function for Aside Menu</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleBackClick</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Handle function for Back Click Button in WorkArea</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleContinueClick</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Handle function for Continue Click Button in WorkArea</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleChange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Handle function for Radio Button Option in Pareto</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="App.js.html">App.js</a>, <a href="App.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-AsideMenu.html">AsideMenu</a></li><li><a href="module-Copyright.html">Copyright</a></li><li><a href="module-Evaluation.html">Evaluation</a></li><li><a href="module-Graph.html">Graph</a></li><li><a href="module-Hero.html">Hero</a></li><li><a href="module-InputTable.html">InputTable</a></li><li><a href="module-Pareto.html">Pareto</a></li><li><a href="module-Priorization.html">Priorization</a></li><li><a href="module-ReducedMatrix.html">ReducedMatrix</a></li><li><a href="module-RenderArea.html">RenderArea</a></li><li><a href="module-SignInSide.html">SignInSide</a></li><li><a href="module-WorkArea.html">WorkArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asideMenuOptions">asideMenuOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Tue Jul 28 2020 11:42:02 GMT-0500 (GMT-05:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

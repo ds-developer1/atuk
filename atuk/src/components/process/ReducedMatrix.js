@@ -18,7 +18,13 @@
 
 import React from "react";
 import Spreadsheet from "react-spreadsheet";
-
+/**
+ * The priorization component
+ * @module ReducedMatrix
+ * @param {*} props - includes swotData, setSwotData from the App Component
+ * @param {Array.<string>} props.swotData - Used to show the current SWOT data
+ * @param {function()} props.setSwotData - Used to change the current SWOT data
+ */
 const ReducedMatrix = (props) => {
   return (
     <React.Fragment>
