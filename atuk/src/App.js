@@ -158,7 +158,7 @@ const AsideMenu = (props) => {
 /**
  * Main component of the program
  * @module App
- * @param {boolean} authentication - Indicates if the user si logged in
+ * @param {boolean} authentication - Indicates if the user is logged in
  * @param {string} workAreaOption - Controls the current step of the mathematical SWOT
  * @param {string} workAreaTitle - Controls the current step title of the mathematical SWOT
  * @param {string} pareto - Defines the value to use in order to apply Pareto
