@@ -268,6 +268,25 @@ function App() {
       { value: "10" },
     ],
   ]);
+  let [swotDataProcess1, setSwotDataProcess1] = useState(swotData);
+  let [swotDataProcess2, setSwotDataProcess2] = useState([
+    [{ value: "Process 2" }],
+  ]);
+  let [swotDataProcess3, setSwotDataProcess3] = useState([
+    [{ value: "Process 3" }],
+  ]);
+  let [swotDataProcess4, setSwotDataProcess4] = useState([
+    [{ value: "Process 4" }],
+  ]);
+  let [swotDataProcess5, setSwotDataProcess5] = useState([
+    [{ value: "Process 5" }],
+  ]);
+  let [swotDataProcess6, setSwotDataProcess6] = useState([
+    [{ value: "Process 6" }],
+  ]);
+  let [swotDataProcess7, setSwotDataProcess7] = useState([
+    [{ value: "Process 7" }],
+  ]);
 
   // Functions to use in the SWOT workflow
   /**
@@ -528,49 +547,54 @@ function App() {
    * @param {string} option - The value of the current workSpaceOption
    */
   const performanceWorkflow = function (option) {
-    // slice() creates a new array with the values of swotData
-    let items = swotData.slice();
     // switch the new value of workAreaOption
     // Argument 'items' are send by reference
+    // slice() creates a new array with the values of swotData
+    let items = swotData.slice();
     switch (option) {
       case "1":
+        setSwotDataProcess1(items);
         break;
       case "2":
         calculateTotals(items);
         orderSwotData(items);
         calculatePercentages(items);
         calculateAccumulatedPercentages(items);
+        setSwotDataProcess2(items);
         break;
       case "3":
         applyPareto(items);
+        setSwotDataProcess3(items);
         break;
       case "4":
         generateEvaluationMatrix(items);
         break;
       case "5":
+        setSwotDataProcess4(swotData);
         evaluateInfluency(items);
+        setSwotDataProcess5(items);
         break;
       case "6":
         let data = dataGraph.slice();
         generateDataGraph(items, data);
         setDataGraph(data);
-        break;
-      case "7":
+        setSwotDataProcess6(items);
         /**
          * Convert HTML rendered to SVG in canvas
          * */
         html2canvas(document.getElementById("report")).then(function (canvas) {
           // Convert SVG in canvas to PNG
           const imgData = canvas.toDataURL("image/png");
-          console.log("data: " + imgData);
-          console.log(canvas);
           // Convert PNG to PDF to download
           const pdf = new jsPDF({
             orientation: "landscape",
           });
           pdf.addImage(imgData, "PNG", 10, 10);
-          pdf.save("download.pdf");
+          pdf.save("Informe Proyecto ATUK.pdf");
         });
+        break;
+      case "7":
+        setSwotDataProcess7(items);
         break;
       default:
         break;
@@ -591,6 +615,30 @@ function App() {
     let [option] = e.target.name.split("/");
     // Updates the option of the Work Area
     setWorkAreaOption(option);
+    switch (option) {
+      case "1":
+        setSwotData(swotDataProcess1);
+        break;
+      case "2":
+        setSwotData(swotDataProcess2);
+        break;
+      case "3":
+        setSwotData(swotDataProcess3);
+        break;
+      case "4":
+        console.log(swotDataProcess4);
+        setSwotData(swotDataProcess4);
+        break;
+      case "5":
+        setSwotData(swotDataProcess5);
+        break;
+      case "6":
+        setSwotData(swotDataProcess6);
+        break;
+      case "7":
+        setSwotData(swotDataProcess7);
+        break;
+    }
   };
 
   /**
@@ -634,6 +682,52 @@ function App() {
   };
 
   /**
+   * Handle function for Save Click Button in WorkArea
+   * @function
+   * @param {event} e - The click event data
+   */
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    var fileNamePrompt = prompt(
+      "Ingrese el nombre del proyecto",
+      "Proyecto Atuk 1"
+    );
+    var fileName;
+    if (fileNamePrompt === null || fileNamePrompt === "") {
+      fileName = "Proyecto_Atuk_FODA_Matematico.json";
+    } else {
+      fileName = fileNamePrompt + ".json";
+    }
+    var saveData = (function () {
+      var a = document.createElement("a");
+      document.body.appendChild(a);
+      a.style = "display: none";
+      return function (data, fileName) {
+        var json = JSON.stringify(data),
+          blob = new Blob([json], { type: "octet/stream" }),
+          url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      };
+    })();
+    var data = {
+      mainData: swotData,
+      process1: swotDataProcess1,
+      process2: swotDataProcess2,
+      process3: swotDataProcess3,
+      process4: swotDataProcess4,
+      process5: swotDataProcess5,
+      process6: swotDataProcess6,
+      process7: swotDataProcess7,
+    };
+
+    saveData(data, fileName);
+  };
+
+  /**
    * Handle function for Radio Button Option in Pareto
    * @function
    * @param {event} e - The click event data
@@ -652,6 +746,10 @@ function App() {
     // Sets the first Pareto Index => 80
     setPareto("80");
   }, []);
+
+  /**
+   * Determine the current swotData
+   */
 
   //#region Render App component
   /**
@@ -687,6 +785,7 @@ function App() {
                   titleName={workAreaTitle}
                   handleBackClick={handleBackClick}
                   handleContinueClick={handleContinueClick}
+                  handleSaveClick={handleSaveClick}
                   handleChange={handleChange}
                   dataGraph={dataGraph}
                 />

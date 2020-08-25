@@ -88,6 +88,19 @@ const WorkArea = (props) => {
       <div className="container" id="report">
         <p className="title">Atuk</p>
         <p className="subtitle">{props.titleName}</p>
+        <div className="container">
+          <div className="field is-grouped">
+            <div className="control">
+              <div
+                className="button is-link mb-3"
+                name="btnSave"
+                onClick={props.handleSaveClick}
+              >
+                Guardar Proyecto
+              </div>
+            </div>
+          </div>
+        </div>
         <RenderArea
           workAreaOption={props.workAreaOption}
           swotData={props.swotData}
