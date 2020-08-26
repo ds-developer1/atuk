@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // Styles
 import "./App.css";
 import "./App.sass";
@@ -31,6 +31,8 @@ import SignInSide from "./components/authentication/SignInSide";
 // Libraries for PDF Report
 import * as jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+
+let swotDataProcess7_1 = [[{ value: "swotData" }]];
 
 //#region asideMenuOptions
 /**
@@ -186,7 +188,10 @@ function App() {
   let [workAreaOption, setWorkAreaOption] = useState("1");
   let [workAreaTitle, setWorkAreaTitle] = useState("Matriz Inicial");
   let [pareto, setPareto] = useState("80");
+  let [pow, setPow] = useState("2");
   let [dataGraph, setDataGraph] = useState([]);
+  // Files uploaded
+  let fileInput = useRef();
 
   // Data for SWOT workflow
   let [swotData, setSwotData] = useState([
@@ -204,88 +209,25 @@ function App() {
       { value: "1" },
       { value: "1" },
     ],
-    [
-      { value: "Variables 2" },
-      { value: "2" },
-      { value: "2" },
-      { value: "2" },
-      { value: "2" },
-    ],
-    [
-      { value: "Variables 3" },
-      { value: "3" },
-      { value: "3" },
-      { value: "3" },
-      { value: "3" },
-    ],
-    [
-      { value: "Variables 4" },
-      { value: "4" },
-      { value: "4" },
-      { value: "4" },
-      { value: "4" },
-    ],
-    [
-      { value: "Variables 5" },
-      { value: "5" },
-      { value: "5" },
-      { value: "5" },
-      { value: "5" },
-    ],
-    [
-      { value: "Variables 6" },
-      { value: "6" },
-      { value: "6" },
-      { value: "6" },
-      { value: "6" },
-    ],
-    [
-      { value: "Variables 7" },
-      { value: "7" },
-      { value: "7" },
-      { value: "7" },
-      { value: "7" },
-    ],
-    [
-      { value: "Variables 8" },
-      { value: "8" },
-      { value: "8" },
-      { value: "8" },
-      { value: "8" },
-    ],
-    [
-      { value: "Variables 9" },
-      { value: "9" },
-      { value: "9" },
-      { value: "9" },
-      { value: "9" },
-    ],
-    [
-      { value: "Variables 10" },
-      { value: "10" },
-      { value: "10" },
-      { value: "10" },
-      { value: "10" },
-    ],
   ]);
   let [swotDataProcess1, setSwotDataProcess1] = useState(swotData);
   let [swotDataProcess2, setSwotDataProcess2] = useState([
-    [{ value: "Process 2" }],
+    [{ value: "Índice de pareto" }],
   ]);
   let [swotDataProcess3, setSwotDataProcess3] = useState([
-    [{ value: "Process 3" }],
+    [{ value: "Matriz reducida" }],
   ]);
   let [swotDataProcess4, setSwotDataProcess4] = useState([
-    [{ value: "Process 4" }],
+    [{ value: "Evaluación motricidad y dependencia" }],
   ]);
   let [swotDataProcess5, setSwotDataProcess5] = useState([
-    [{ value: "Process 5" }],
+    [{ value: "Priorización de variables" }],
   ]);
   let [swotDataProcess6, setSwotDataProcess6] = useState([
-    [{ value: "Process 6" }],
+    [{ value: "Clasificación por motricidad y dependencia" }],
   ]);
   let [swotDataProcess7, setSwotDataProcess7] = useState([
-    [{ value: "Process 7" }],
+    [{ value: "Elevación a la potencia" }],
   ]);
 
   // Functions to use in the SWOT workflow
@@ -516,8 +458,8 @@ function App() {
     for (let i = 1; i < variables.length + 1; i++) {
       items.push([
         variables[i - 1],
-        { value: dependency[i - 1] },
-        { value: motricity[i - 1] },
+        { value: dependency[i - 1].toString() },
+        { value: motricity[i - 1].toString() },
       ]);
     }
   };
@@ -542,6 +484,29 @@ function App() {
   };
 
   /**
+   * Function to generate the data to be presented after apply Pow
+   * @function
+   * @param {Array.<Object>} items - Swot Data of {@link App}
+   * @returns {Array.<Object>}
+   */
+  const applyPow = function (items) {
+    // Get the length of the data array
+    let length = items.length;
+    // Loop to generate the pow Matrix
+    for (let i = 1; i < length; i++) {
+      for (let j = 1; j < length; j++) {
+        if (i !== j) {
+          items[i][j].value = Math.pow(
+            Number(items[i][j].value),
+            Number(pow)
+          ).toString();
+        }
+      }
+    }
+    return items;
+  };
+
+  /**
    * Function to control de workflow of the Mathematical Swot
    * @function
    * @param {string} option - The value of the current workSpaceOption
@@ -553,32 +518,54 @@ function App() {
     let items = swotData.slice();
     switch (option) {
       case "1":
-        setSwotDataProcess1(items);
+        setSwotData(items);
         break;
       case "2":
+        let __data1 = [[{ value: "Process1" }]];
+        __data1.pop();
+        for (let i = 0; i < swotData.length; i++) {
+          __data1.push([]);
+          for (let j = 0; j < swotData[0].length; j++) {
+            __data1[i].push({ value: swotData[i][j].value });
+          }
+        }
+        setSwotDataProcess1(__data1);
         calculateTotals(items);
         orderSwotData(items);
         calculatePercentages(items);
         calculateAccumulatedPercentages(items);
         setSwotDataProcess2(items);
+        setSwotData(items);
         break;
       case "3":
         applyPareto(items);
         setSwotDataProcess3(items);
+        setSwotData(items);
         break;
       case "4":
         generateEvaluationMatrix(items);
+        setSwotData(items);
         break;
       case "5":
         setSwotDataProcess4(swotData);
+        setSwotDataProcess7(swotData);
+        swotDataProcess7_1.pop();
+        for (let i = 0; i < swotData.length; i++) {
+          swotDataProcess7_1.push([]);
+          for (let j = 0; j < swotData[0].length; j++) {
+            var v = swotData[i][j].value;
+            swotDataProcess7_1[i].push({ value: v });
+          }
+        }
         evaluateInfluency(items);
         setSwotDataProcess5(items);
+        setSwotData(items);
         break;
       case "6":
         let data = dataGraph.slice();
         generateDataGraph(items, data);
         setDataGraph(data);
-        setSwotDataProcess6(items);
+        setSwotDataProcess6(data);
         /**
          * Convert HTML rendered to SVG in canvas
          * */
@@ -592,14 +579,25 @@ function App() {
           pdf.addImage(imgData, "PNG", 10, 10);
           pdf.save("Informe Proyecto ATUK.pdf");
         });
+        setSwotData(items);
         break;
       case "7":
-        setSwotDataProcess7(items);
+        let _data = [];
+        _data.pop();
+        for (let i = 0; i < swotDataProcess7_1.length; i++) {
+          _data.push([]);
+          for (let j = 0; j < swotDataProcess7_1[0].length; j++) {
+            var _v = swotDataProcess7_1[i][j].value;
+            _data[i].push({ value: _v });
+          }
+        }
+        let _swotData = applyPow(_data);
+        setSwotData(_swotData);
+        setSwotDataProcess7(_swotData);
         break;
       default:
         break;
     }
-    setSwotData(items);
   };
 
   // Buttons & Aside Menu handle functions
@@ -626,7 +624,6 @@ function App() {
         setSwotData(swotDataProcess3);
         break;
       case "4":
-        console.log(swotDataProcess4);
         setSwotData(swotDataProcess4);
         break;
       case "5":
@@ -678,6 +675,8 @@ function App() {
       setWorkAreaOption(option.toString());
       // Performance the correspodent operations over the SWOT Data Array
       performanceWorkflow(option.toString());
+    } else {
+      performanceWorkflow("7");
     }
   };
 
@@ -695,9 +694,9 @@ function App() {
     );
     var fileName;
     if (fileNamePrompt === null || fileNamePrompt === "") {
-      fileName = "Proyecto_Atuk_FODA_Matematico.json";
+      fileName = "Proyecto_Atuk_FODA_Matematico.atuk";
     } else {
-      fileName = fileNamePrompt + ".json";
+      fileName = fileNamePrompt + ".atuk";
     }
     var saveData = (function () {
       var a = document.createElement("a");
@@ -714,7 +713,6 @@ function App() {
       };
     })();
     var data = {
-      mainData: swotData,
       process1: swotDataProcess1,
       process2: swotDataProcess2,
       process3: swotDataProcess3,
@@ -733,7 +731,20 @@ function App() {
    * @param {event} e - The click event data
    */
   const handleChange = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setPareto(e.target.value);
+  };
+
+  /**
+   * Handle function for Radio Button Option in Pow
+   * @function
+   * @param {event} e - The click event data
+   */
+  const handleChangePow = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setPow(e.target.value);
   };
 
   // Effect of workAreaOption -- Updates de title of the WorkArea
@@ -745,11 +756,67 @@ function App() {
   useEffect(() => {
     // Sets the first Pareto Index => 80
     setPareto("80");
+    setPow("2");
   }, []);
 
-  /**
-   * Determine the current swotData
-   */
+  // File Input functions
+  const handleFileSubmit = (event) => {
+    event.preventDefault();
+    let file = fileInput.current.files[0];
+    if (file !== undefined) {
+      if (file.type && file.type.indexOf("atuk") === -1) {
+        alert("No ha seleccionao un proyecto de ATUK");
+      } else {
+        const reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = (e) => {
+          var project = JSON.parse(e.target.result);
+          setSwotDataProcess1(project.process1);
+          setSwotDataProcess2(project.process2);
+          setSwotDataProcess3(project.process3);
+          setSwotDataProcess4(project.process4);
+          setSwotDataProcess5(project.process5);
+          setSwotDataProcess6(project.process6);
+          setSwotDataProcess7(project.process7);
+          swotDataProcess7_1 = [];
+          for (let i = 0; i < project.process4.length; i++) {
+            swotDataProcess7_1.push([]);
+            for (let j = 0; j < project.process4[0].length; j++) {
+              var v = project.process4[i][j].value;
+              swotDataProcess7_1[i].push({ value: v });
+            }
+          }
+          switch (workAreaOption) {
+            case "1":
+              setSwotData(project.process1);
+              break;
+            case "2":
+              setSwotData(project.process2);
+              break;
+            case "3":
+              setSwotData(project.process3);
+              break;
+            case "4":
+              setSwotData(project.process4);
+              break;
+            case "5":
+              setSwotData(project.process5);
+              break;
+            case "6":
+              setSwotData(project.process6);
+              break;
+            case "7":
+              setSwotData(project.process7);
+              break;
+            default:
+              break;
+          }
+        };
+      }
+    } else {
+      alert("No ha seleccionado ningún archivo");
+    }
+  };
 
   //#region Render App component
   /**
@@ -787,6 +854,9 @@ function App() {
                   handleContinueClick={handleContinueClick}
                   handleSaveClick={handleSaveClick}
                   handleChange={handleChange}
+                  handleChangePow={handleChangePow}
+                  handleFileSubmit={handleFileSubmit}
+                  fileInput={fileInput}
                   dataGraph={dataGraph}
                 />
               </div>

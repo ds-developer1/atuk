@@ -19,7 +19,7 @@
 import React from "react";
 import Spreadsheet from "react-spreadsheet";
 /**
- * Component used to define Pareto's value and apply to SWOT matrix
+ * Component used to define Pow's value and apply to SWOT matrix
  * @module Pareto
  * @param {*} props - includes the handleChange event from the App Component
  * @param {function()} props.handleChange - Changes the value of Pareto variable in App Component
@@ -32,18 +32,34 @@ const Pow = (props) => {
       <div className="container">
         <div className="columns">
           <div className="column">
-            <div className="control" onChange={props.handleChange}>
+            <div className="control" onChange={props.handleChangePow}>
               <label className="radio mr-3">
-                <input type="radio" value="4" name="pareto" defaultChecked />
-                Potencia 4
+                <input type="radio" value="2" name="pow" defaultChecked />
+                Potencia 2
               </label>
               <label className="radio mr-3">
-                <input type="radio" value="3" name="pareto" />
+                <input type="radio" value="3" name="pow" />
                 Potencia 3
               </label>
               <label className="radio mr-3">
-                <input type="radio" value="2" name="pareto" />
-                Potencia 2
+                <input type="radio" value="4" name="pow" />
+                Potencia 4
+              </label>
+              <label className="radio mr-3">
+                <input type="radio" value="5" name="pow" />
+                Potencia 5
+              </label>
+              <label className="radio mr-3">
+                <input type="radio" value="6" name="pow" />
+                Potencia 6
+              </label>
+              <label className="radio mr-3">
+                <input type="radio" value="7" name="pow" />
+                Potencia 7
+              </label>
+              <label className="radio mr-3">
+                <input type="radio" value="8" name="pow" />
+                Potencia 8
               </label>
             </div>
           </div>
