@@ -566,22 +566,26 @@ function App() {
         generateDataGraph(items, data);
         setDataGraph(data);
         setSwotDataProcess6(data);
+        setSwotData(items);
+        break;
+      case "7":
         /**
          * Convert HTML rendered to SVG in canvas
          * */
-        html2canvas(document.getElementById("report")).then(function (canvas) {
+        html2canvas(document.getElementById("report"), {
+          scrollY: -window.scrollY,
+        }).then(function (canvas) {
           // Convert SVG in canvas to PNG
           const imgData = canvas.toDataURL("image/png");
           // Convert PNG to PDF to download
           const pdf = new jsPDF({
             orientation: "landscape",
+            unit: "px",
+            format: "a4",
           });
-          pdf.addImage(imgData, "PNG", 10, 10);
+          pdf.addImage(imgData, "PNG", 20, 20);
           pdf.save("Informe Proyecto ATUK.pdf");
         });
-        setSwotData(items);
-        break;
-      case "7":
         let _data = [];
         _data.pop();
         for (let i = 0; i < swotDataProcess7_1.length; i++) {

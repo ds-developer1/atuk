@@ -92,49 +92,49 @@ const RenderArea = (props) => {
 const WorkArea = (props) => {
   return (
     <React.Fragment>
+      <div className="container">
+        <div className="field is-grouped">
+          <div className="control">
+            <div
+              className="button is-link mb-3"
+              name="btnSave"
+              onClick={props.handleSaveClick}
+            >
+              Guardar Proyecto
+            </div>
+          </div>
+          <div className="control">
+            <div
+              className="button is-link mb-3"
+              name="btnLoad"
+              onClick={props.handleFileSubmit}
+            >
+              Subir Proyecto
+            </div>
+          </div>
+          <div className="file has-name  is-right">
+            <label className="file-label">
+              <input
+                className="file-input"
+                type="file"
+                name="fileProject"
+                accept=".atuk"
+                ref={props.fileInput}
+              />
+              <span className="file-cta">
+                <span className="file-icon">
+                  <i className="fas fa-upload"></i>
+                </span>
+                <span className="file-label">Elegir proyecto...</span>
+              </span>
+              <span className="file-name">Proyecto Atuk</span>
+            </label>
+          </div>
+        </div>
+      </div>
       <div className="container" id="report">
         <p className="title">Atuk</p>
         <p className="subtitle">{props.titleName}</p>
-        <div className="container">
-          <div className="field is-grouped">
-            <div className="control">
-              <div
-                className="button is-link mb-3"
-                name="btnSave"
-                onClick={props.handleSaveClick}
-              >
-                Guardar Proyecto
-              </div>
-            </div>
-            <div className="control">
-              <div
-                className="button is-link mb-3"
-                name="btnLoad"
-                onClick={props.handleFileSubmit}
-              >
-                Subir Proyecto
-              </div>
-            </div>
-            <div className="file has-name  is-right">
-              <label className="file-label">
-                <input
-                  className="file-input"
-                  type="file"
-                  name="fileProject"
-                  accept=".atuk"
-                  ref={props.fileInput}
-                />
-                <span className="file-cta">
-                  <span className="file-icon">
-                    <i className="fas fa-upload"></i>
-                  </span>
-                  <span className="file-label">Elegir proyecto...</span>
-                </span>
-                <span className="file-name">Proyecto Atuk</span>
-              </label>
-            </div>
-          </div>
-        </div>
         <RenderArea
           workAreaOption={props.workAreaOption}
           swotData={props.swotData}
